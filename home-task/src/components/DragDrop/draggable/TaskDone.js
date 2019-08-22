@@ -22,6 +22,7 @@ class TaskDone extends Component {
   render() {
     return (
       <div className="box--done">
+        <h1>Done</h1>
         {this.props.taskSelected.map((item, index) => (
           <Draggable
             key={item.id}

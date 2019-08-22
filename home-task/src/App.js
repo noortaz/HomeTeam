@@ -1,22 +1,25 @@
 import React from 'react';
-import './App.css';
-import Project from './components/Project/Project';
+
+// imported routes
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+
+//imported the components
+import Header from './components/Header/Header';
+import Project from './components/Project/Project';
+import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 
 class App extends React.Component {
   render() {
     return (
       <>
-      
+      <Header/>
       <BrowserRouter>
         <Switch>
-          <Route path='/projects' />
-          <Route />
+          <Route path='/project/details' component={ProjectDetails}/>
+          <Route path='/project' component={Project}/>
           <Route/>
         </Switch>
       </BrowserRouter>
-      <h1>Bismillah</h1>
-      <Project/>
       </>
     )
   }

@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 
-import '../dragdrop.scss';
-import TaskList from '../draggable/TaskList';
-import TaskDone from '../draggable/TaskDone';
+//import styles
+import './dragdrop.scss';
 
+// import components
+import TaskList from './draggable/TaskList';
+import TaskDone from './draggable/TaskDone';
+
+//import libraries
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-const tasks = ['Dish washing', 'Laundry', 'Taking the dog for a walk', 'Vaccuum the house', 'Helping kids with Homework'];
+//import data
+import data from '../../data/taskData';
 
 
-// fake data generator
+// data count generator
 const getItems = (count, offset = 0) =>
 	Array.from({ length: count }, (v, k) => k).map(k => ({
-		id: `item-${k + offset}`,
-    content: `task ${k + offset}: `,
-    task: `${tasks[k]}`
+		id: `item-${1 + k + offset}`,
+    content: `Task ${1 + k + offset}: `,
+    task: `${data[k].title}`
 	}));
 
-// a little function to help us with reordering the result
+// a function that reorders the result
 const reorder = (list, startIndex, endIndex) => {
 	const result = Array.from(list);
 	const [removed] = result.splice(startIndex, 1);
@@ -43,8 +48,9 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 	return result;
 };
 
-const grid = 8;
 
+// styles the cards while dragging
+const grid = 8;
 const getListStyle = isDraggingOver => ({
 	background: isDraggingOver ? 'lightblue' : 'lightgrey',
 	padding: grid,
@@ -53,8 +59,8 @@ const getListStyle = isDraggingOver => ({
 
 class DragDrop extends Component {
 	state = {
-		items: getItems((tasks.length - 1)),
-    selected: getItems(0, (tasks.length - 1))
+		items: getItems((data.length)),
+    selected: getItems(0, (data.length))
 	};
 
     /**
@@ -108,8 +114,7 @@ class DragDrop extends Component {
 		}
 	};
 
-	// Normally you would want to split things out into separate components.
-	// But in this example everything is just done in one place for simplicity
+
 	render() {
 		return (
       <DragDropContext onDragEnd={this.onDragEnd} >
@@ -140,5 +145,5 @@ class DragDrop extends Component {
 	}
 }
 
-// Put the things into the DOM!
+
 export default DragDrop;

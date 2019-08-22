@@ -1,6 +1,10 @@
 import React from 'react';
+
+//import routes
+import {Link} from 'react-router-dom';
+
+//import components
 import CreateProject from './Modal/CreateProject';
-import DragDrop from '../DragDrop/droppable/DragDrop';
 
 class Project extends React.Component {
 
@@ -35,9 +39,8 @@ class Project extends React.Component {
               <p>Task-1 {item}</p>
             )
           })}</p> */}
+          <Link to='/project/details'><button>See project</button></Link>
         </div>
-          {/* <KanbanBoard/> */}
-        <DragDrop />
       </>
     )
   }
