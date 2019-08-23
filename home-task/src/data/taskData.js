@@ -30,9 +30,9 @@ const data = [{
   description: `Everyone will wash their own dishes but the extra cooking pots, plates etc have to be cleaned by you.`
 }, {
   taskid: 7,
-  title: 'Plan a fun game to play altogether',
+  title: 'Take the garbage out',
   assignedTo: ['Kid-1', 'Kid-2'],
-  description: `Surprise other family members by planning something special and unique.`
+  description: `Everyday you must take the garbage out and dump int the correct categories.`
 }];
 
 
