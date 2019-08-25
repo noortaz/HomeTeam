@@ -1,20 +1,40 @@
 import React from 'react';
 
-//import route
+//import packages
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 
 //import the components
 import DragDrop from '../DragDrop/DragDrop';
-
-
-//import data
-import data from '../../data/taskData';
-
+//
+import NewDrag from '../NewDrag/NewDrag';
 
 
 class ProjectDetails extends React.Component {
+
+  state = {
+    taskList: []
+  }
+
+  getAllTasks = () => {
+    axios.get('http://localhost:8080/taskData')
+    .then(response => {
+      console.log(response.data);
+      this.setState({
+        taskList: response.data
+      })
+    })
+  }
+
+  componentDidMount() {
+    this.getAllTasks();
+  }
+
+
   render() {
+
+    console.log(this.state.taskList);
     return (
       <>
       <div>
@@ -30,7 +50,7 @@ class ProjectDetails extends React.Component {
       <div>
         <h2>All tasks for this project</h2>
         <ul>
-          {data.map((item) => {
+          {this.state.taskList.map((item) => {
             return (
               <li key={item.taskid}>
                 <p>Title: {item.title}</p>
@@ -42,10 +62,7 @@ class ProjectDetails extends React.Component {
         </ul>
       </div>
 
-
-      <DragDrop/>
-
-      
+      <DragDrop />
       </>
     )
   }

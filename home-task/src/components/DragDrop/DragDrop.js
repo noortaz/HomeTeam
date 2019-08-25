@@ -10,8 +10,8 @@ import TaskDone from './draggable/TaskDone';
 //import libraries
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-//import data
-import data from '../../data/taskData';
+// //import data
+ import data from '../../data/taskData';
 
 
 // data count generator
@@ -58,10 +58,12 @@ const getListStyle = isDraggingOver => ({
 });
 
 class DragDrop extends Component {
+
+  
 	state = {
-		items: getItems((data.length)),
+    items: getItems((data.length)),
     selected: getItems(0, (data.length))
-	};
+  };
 
     /**
      * A semi-generic way to handle multiple lists. Matches
@@ -116,9 +118,12 @@ class DragDrop extends Component {
 
 
 	render() {
+    console.log(this.props.taskList);
 		return (
       <DragDropContext onDragEnd={this.onDragEnd} >
-        <div className="box">        
+
+        <div className="box">   
+
           <Droppable droppableId="droppable" className="box--left">
             {(provided, snapshot) => (
               <div
@@ -129,6 +134,8 @@ class DragDrop extends Component {
               </div>
             )}
           </Droppable>
+
+
           <Droppable droppableId="droppable2" className="box--right">
             {(provided, snapshot) => (
               <div
@@ -139,6 +146,8 @@ class DragDrop extends Component {
               </div>
             )}
           </Droppable>
+
+
         </div>
 			</DragDropContext>
 		);
