@@ -3,36 +3,43 @@
     "task1": { 
       "id": "task1", 
       "title": "Take the dog for a walk",
+      "assignedTo": ["mom"],
       "description": " You have to take the dog out for at least 30 minutes. Don't let it go too far. Be careful when crossing streets."
     },
     "task2": { 
       "id": "task2", 
       "title": "Do the grocery shopping",
+      "assignedTo": ["mom"],
       "description": "You are responsible for planning our weekly diet and buy fruits, vegetables, meat and other food-items with the help of another person."
     },
     "task3": { 
       "id": "task3", 
       "title": "Do Laundry",
+      "assignedTo": ["mom"],
       "description": "You will do the laundry, dry them well, fold them and put them in closet"
     },
     "task4": {
        "id": "task4", 
        "title": "Cook daily meals",
+       "assignedTo": ["mom"],
        "description": "This task involves daily cooking, you can alter the days with another person."
     },
     "task5": { 
       "id": "task5", 
       "title": "Vaccuum the house",
+      "assignedTo": ["mom"],
       "description": "The house needs to cleaned and you have to vaccuum all the carpets."
     },
     "task6": { 
       "id": "task6", 
       "title": "Wash the dishes",
+      "assignedTo": ["mom"],
       "description": "Everyone will wash their own dishes but the extra cooking pots, plates etc have to be cleaned by you."
     },
     "task7": { 
       "id": "task7", 
       "title": "Take the garbage out",
+      "assignedTo": ["mom"],
       "description": "Everyday you must take the garbage out and dump int the correct categories."
     }
   },

@@ -12,6 +12,7 @@ import styled from 'styled-components';
 
 // //import data
 import data from '../../data/fakeData';
+import axios from 'axios';
 
 const Container = styled.div`
 margin: 8px;
@@ -23,8 +24,15 @@ justify-content: space-around;
 
 class DragDrop extends React.Component {
 
+
   state = data;
 
+  componentDidUpdate(prevProps) {
+    if (this.props.data !== prevProps.data) {
+      this.setState(this.props.data);
+    }
+  }
+  
   onDragEnd = result => {
     const {destination, source, draggableId} = result;
 

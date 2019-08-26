@@ -35,21 +35,11 @@ app.get('/projectData', (req, res) => {
 })
 
 app.get('/taskData', (req, res) => {
-
     res.json(combinedData);
 })
 
 app.post('/taskData', (req, res) => {
-//    var varname = req.body.id;
-//    var value = req.body;
-//    this[varname] = value;
 
-//     // var varname = req.body.id;  // pretend a user input that
-//     // var value = req.body;
-//     // eval('var ' + varname + '=' + value);
-
-// console.log(varname);
-// console.log(value)
     combinedData.columns.column1.taskIds.push(req.body.id);
     combinedData = { ...combinedData};
     combinedData.tasks[req.body.id] = req.body;

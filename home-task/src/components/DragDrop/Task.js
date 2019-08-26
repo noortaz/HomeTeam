@@ -24,6 +24,8 @@ class Task extends React.Component {
             isDragging={snapshot.isDragging}
           >
           {this.props.task.title}
+            <p>Assigned To: {this.props.task.assignedTo[0]}</p>
+          
             {provided.placeholder}
           </Container>
         )}

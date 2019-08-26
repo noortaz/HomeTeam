@@ -14,6 +14,7 @@ import DragDrop from '../DragDrop/DragDrop';
 class ProjectDetails extends React.Component {
 
   state = {
+    data: '',
     taskList: []
   }
 
@@ -25,9 +26,19 @@ class ProjectDetails extends React.Component {
         return  column.taskIds.map(taskId => response.data.tasks[taskId])
       })
       this.setState({
+        data: response.data,
         taskList: tasks[0]
       })
+    })
+  }
 
+  postTasks = () => {
+    axios.post('http://localhost:8080/taskData', {
+      id: 'task20',
+      title: '',
+      description:''
+    }).then(response => {
+      console.log(response.data)
     })
   }
 
@@ -57,14 +68,14 @@ class ProjectDetails extends React.Component {
               <li key={item.id}>
                 <p>Title: {item.title}</p>
                 <p>Description: {item.description}</p>
-                {/* <p>Assigned To: {(item.assignedTo[1]) ? `${item.assignedTo[0]} and ${item.assignedTo[1]}` : `${item.assignedTo[0]}`}</p> */}
+                <p>Assigned To: {(item.assignedTo[1]) ? `${item.assignedTo[0]} and ${item.assignedTo[1]}` : `${item.assignedTo[0]}`}</p>
               </li>
             )
           })}
         </ul>
       </div>
 
-        <DragDrop data={this.state.taskList}/>
+        <DragDrop data={this.state.data}/>
       </>
     )
   }
