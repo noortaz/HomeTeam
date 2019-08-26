@@ -6,6 +6,7 @@ const uuid = require('uuid/v1');
 
 const projectData =  require('./data/projectData.json');
 const taskData = require('./data/taskData.json');
+const combinedData = require('./data/combinedData.json');
 
 
 const firebase = require("firebase/app");
@@ -34,15 +35,17 @@ app.get('/projectData', (req, res) => {
 })
 
 app.get('/taskData', (req, res) => {
-    res.json(taskData);
+    
+    res.json(combinedData);
 
 })
 
 app.post('/taskData', (req, res) => {
-    const task = req.body;
-    const newTask = { ...task, taskId: `${uuid().substr(0, 12)}` }
-    taskData.push(newTask);
-    res.json(newTask);
+    // const task = req.body;
+    // const newTask = { ...task, taskId: `${uuid().substr(0, 12)}` }
+    // console.log(combinedData.tasks)
+    // req.json(combinedData);
+    console.log(combinedData.tasks.req.body.task9);
 })
 
 app.post('/projectData', (req, res) => {

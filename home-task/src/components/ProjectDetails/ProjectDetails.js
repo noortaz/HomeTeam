@@ -8,7 +8,7 @@ import axios from 'axios';
 //import the components
 import DragDrop from '../DragDrop/DragDrop';
 //
-import NewDrag from '../NewDrag/NewDrag';
+
 
 
 class ProjectDetails extends React.Component {
@@ -20,10 +20,14 @@ class ProjectDetails extends React.Component {
   getAllTasks = () => {
     axios.get('http://localhost:8080/taskData')
     .then(response => {
-      console.log(response.data);
-      this.setState({
-        taskList: response.data
+      const tasks = response.data.columnOrder.map(columnId => {
+        const column = response.data.columns[columnId];
+        return  column.taskIds.map(taskId => response.data.tasks[taskId])
       })
+      this.setState({
+        taskList: tasks[0]
+      })
+
     })
   }
 
@@ -33,12 +37,10 @@ class ProjectDetails extends React.Component {
 
 
   render() {
-
-    console.log(this.state.taskList);
     return (
       <>
       <div>
-          <Link to="/project"><button>Go back</button></Link>
+        <Link to="/project"><button>Go back</button></Link>
         <h1>Weekly Tasks</h1>
         <p>We will complete seven tasks this week and every memeber should complete at least one task. To get a reward you have to complete at least two task</p>
       </div>
@@ -52,17 +54,17 @@ class ProjectDetails extends React.Component {
         <ul>
           {this.state.taskList.map((item) => {
             return (
-              <li key={item.taskid}>
+              <li key={item.id}>
                 <p>Title: {item.title}</p>
-                <p>Description: {item.title}</p>
-                <p>Assigned To: {(item.assignedTo[1]) ? `${item.assignedTo[0]} and ${item.assignedTo[1]}` : `${item.assignedTo[0]}`}</p>
+                <p>Description: {item.description}</p>
+                {/* <p>Assigned To: {(item.assignedTo[1]) ? `${item.assignedTo[0]} and ${item.assignedTo[1]}` : `${item.assignedTo[0]}`}</p> */}
               </li>
             )
           })}
         </ul>
       </div>
 
-      <DragDrop />
+        <DragDrop data={this.state.taskList}/>
       </>
     )
   }

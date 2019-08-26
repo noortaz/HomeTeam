@@ -1,0 +1,69 @@
+{
+  "tasks": {
+    "task1": { 
+      "id": "task1", 
+      "title": "Take the dog for a walk",
+      "description": " You have to take the dog out for at least 30 minutes. Don't let it go too far. Be careful when crossing streets."
+    },
+    "task2": { 
+      "id": "task2", 
+      "title": "Do the grocery shopping",
+      "description": "You are responsible for planning our weekly diet and buy fruits, vegetables, meat and other food-items with the help of another person."
+    },
+    "task3": { 
+      "id": "task3", 
+      "title": "Do Laundry",
+      "description": "You will do the laundry, dry them well, fold them and put them in closet"
+    },
+    "task4": {
+       "id": "task4", 
+       "title": "Cook daily meals",
+       "description": "This task involves daily cooking, you can alter the days with another person."
+    },
+    "task5": { 
+      "id": "task5", 
+      "title": "Vaccuum the house",
+      "description": "The house needs to cleaned and you have to vaccuum all the carpets."
+    },
+    "task6": { 
+      "id": "task6", 
+      "title": "Wash the dishes",
+      "description": "Everyone will wash their own dishes but the extra cooking pots, plates etc have to be cleaned by you."
+    },
+    "task7": { 
+      "id": "task7", 
+      "title": "Take the garbage out",
+      "description": "Everyday you must take the garbage out and dump int the correct categories."
+    }
+  },
+  "columns": {
+    "column1": {
+      "id": "column1",
+      "title": "To Do",
+      "taskIds": [
+        "task1",
+        "task2",
+        "task3",
+        "task4",
+        "task5",
+        "task6",
+        "task7"
+      ]
+    },
+    "column2": {
+      "id": "column2",
+      "title": "In progress",
+      "taskIds": []
+    },
+    "column3": {
+      "id": "column3",
+      "title": "Done",
+      "taskIds": []
+    }
+  },
+  "columnOrder": [
+      "column1",
+      "column2",
+      "column3"
+  ]
+}

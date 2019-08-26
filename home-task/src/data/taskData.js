@@ -1,6 +1,6 @@
 const data = [{
   taskid: 1,
-  title: 'Take the dog for a walk',
+  title: 'Take the dog out for a walk',
   assignedTo: ['Dad', 'Kid-1'],
   description: `You have to take the dog out for at least 30 minutes. Don't let it go too far. Be careful when crossing streets.`
 }, {
