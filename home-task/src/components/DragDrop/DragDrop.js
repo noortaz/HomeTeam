@@ -18,6 +18,7 @@ margin: 8px;
 border: 1px solid grey;
 border-radius: 8px;
 display: flex;
+justify-content: space-around;
 `;
 
 class DragDrop extends React.Component {
