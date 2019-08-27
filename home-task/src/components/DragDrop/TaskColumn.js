@@ -28,7 +28,30 @@ min-height: 200px;
 
 
 class TaskColumn extends React.Component {
+
   render() {
+    let pointNow;
+    let gainReward;
+
+    if (this.props.column.title === "Done") {
+
+      let lastAddedTask = this.props.tasks.length - 1;
+
+      if(lastAddedTask >= 0){
+      pointNow = this.props.members[this.props.tasks[lastAddedTask].assignedTo[0]];
+
+      pointNow = pointNow + 1;
+      this.props.members[this.props.tasks[lastAddedTask].assignedTo[0]] = pointNow;
+      console.log(this.props.members);
+        if (pointNow >= 1) {
+          gainReward = 1
+        }
+
+      }
+    }
+
+    
+
     return (
       <Container>
         <Title>{this.props.column.title}</Title>
@@ -39,7 +62,7 @@ class TaskColumn extends React.Component {
               {...provided.droppableProps}
               isDraggingOver={snapshot.isDraggingOver}
               >
-                {this.props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} />)}
+                {this.props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} gainReward={gainReward} points={pointNow} members={this.props.members}/>)}
 
               {provided.placeholder}
               </TaskList>

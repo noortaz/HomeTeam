@@ -7,7 +7,6 @@ import axios from 'axios';
 
 //import the components
 import DragDrop from '../DragDrop/DragDrop';
-//
 
 
 
@@ -36,7 +35,8 @@ class ProjectDetails extends React.Component {
     axios.post('http://localhost:8080/taskData', {
       id: 'task20',
       title: '',
-      description:''
+      description:'',
+      assignedTo: []
     }).then(response => {
       console.log(response.data)
     })
@@ -46,8 +46,8 @@ class ProjectDetails extends React.Component {
     this.getAllTasks();
   }
 
-
   render() {
+    
     return (
       <>
       <div>

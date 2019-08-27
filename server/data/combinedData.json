@@ -9,19 +9,19 @@
     "task2": { 
       "id": "task2", 
       "title": "Do the grocery shopping",
-      "assignedTo": ["mom"],
+      "assignedTo": ["dad"],
       "description": "You are responsible for planning our weekly diet and buy fruits, vegetables, meat and other food-items with the help of another person."
     },
     "task3": { 
       "id": "task3", 
       "title": "Do Laundry",
-      "assignedTo": ["mom"],
+      "assignedTo": ["child1"],
       "description": "You will do the laundry, dry them well, fold them and put them in closet"
     },
     "task4": {
        "id": "task4", 
        "title": "Cook daily meals",
-       "assignedTo": ["mom"],
+       "assignedTo": ["child2"],
        "description": "This task involves daily cooking, you can alter the days with another person."
     },
     "task5": { 
@@ -33,7 +33,7 @@
     "task6": { 
       "id": "task6", 
       "title": "Wash the dishes",
-      "assignedTo": ["mom"],
+      "assignedTo": ["dad"],
       "description": "Everyone will wash their own dishes but the extra cooking pots, plates etc have to be cleaned by you."
     },
     "task7": { 
@@ -72,5 +72,11 @@
       "column1",
       "column2",
       "column3"
-  ]
+  ],
+  "members": {
+    "mom": 0,
+    "dad": 0,
+    "child1": 0,
+    "child2": 0
+  }
 }

@@ -27,7 +27,8 @@ const fakeData = {
         }
 
     },
-    columnOrder: ["column1", "column2", "column3"]
+    columnOrder: ["column1", "column2", "column3"],
+    members: { "mom": 0 ,  "dad": 0 ,  "child1": 0 ,  "child2": 0 }
 }
 
 export default fakeData;
