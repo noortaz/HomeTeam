@@ -14,7 +14,7 @@ class ProjectDetails extends React.Component {
 
   state = {
     data: '',
-    taskList: []
+    taskList: [],
   }
 
   getAllTasks = () => {
@@ -33,21 +33,36 @@ class ProjectDetails extends React.Component {
 
   postTasks = () => {
     axios.post('http://localhost:8080/taskData', {
-      id: 'task20',
-      title: '',
-      description:'',
-      assignedTo: []
+      members: this.state.data.members
     }).then(response => {
-      console.log(response.data)
+      //console.log(response.data)
+    })
+  }
+
+  sendPoints = (event) => {
+   // event.preventDefault();
+    console.log("sendPoints function" , this.state.data.members)
+
+    this.setState({
+      data: {
+        members: this.state.data.members,
+      }
     })
   }
 
   componentDidMount() {
     this.getAllTasks();
+    // console.log('component mounts')
+    
+  }
+
+  componentDidUpdate() {
+    this.postTasks();
+    
   }
 
   render() {
-    
+    // console.log('data from parent state ,' , this.state.data.members)
     return (
       <>
       <div>
@@ -75,7 +90,7 @@ class ProjectDetails extends React.Component {
         </ul>
       </div>
 
-        <DragDrop data={this.state.data}/>
+        <DragDrop data={this.state.data} sendPoints={this.sendPoints}/>
       </>
     )
   }
