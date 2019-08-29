@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
-import axios from 'axios';
+
 
 const Container = styled.div`
 border: 1px solid lightgrey;
@@ -21,7 +21,7 @@ class Task extends React.Component {
 
   sendText = () => {
     const recipient = '+12267782404';
-    const textmessages = 'I can send sms from clicking a button in the browser. The number and messages are pre set though';
+    const textmessages = 'completed task';
     fetch(`http://localhost:8080/sendSMS?recipient=${recipient}&textmessages=${textmessages}`)
     .then(response => console.log(response))
     .catch(err => console.log(err));

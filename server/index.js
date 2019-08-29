@@ -62,7 +62,7 @@ app.post('/projectData', (req, res) => {
     const project = req.body;
     const newProject= { ...project, projectId: `${uuid().substr(0, 12)}` }
     projectData.push(newProject);
-    res.json(newProject);
+    res.json(projectData);
 })
 
 

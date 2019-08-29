@@ -2,9 +2,10 @@ import React from 'react';
 
 //import routes
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 //import components
-import CreateProject from './Modal/CreateProject';
+import CreateProject from './CreateProject';
 
 //import data
 import projectData from '../../data/projectData';
@@ -12,13 +13,19 @@ import projectData from '../../data/projectData';
 class Project extends React.Component {
 
   state = {
-    id: 'a20',
-    title: '',
-    description: '',
-    duration: '',
-    members: [],
-    tasks: []
+    projectData: [{members: []}]
+  };
+
+  getProject = () => {
+    axios.get('http://localhost:8080/projectData')
+      .then(response => {
+        console.log(response.data)
+        this.setState({
+          projectData: response.data
+        })
+      })
   }
+
 
   addMember = () => {
     this.setState({
@@ -45,14 +52,20 @@ class Project extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.getProject();
+  }
+
   render() {
+    console.log(this.state.projectData[0].members)
+    
 
     return (
       <>
-        <CreateProject submitProject={this.submitProject} members={this.state.members} addMember={this.addMember} handleMemberChange={this.handleMemberChange}/>
+        <CreateProject submitProject={this.submitProject} members={this.state.projectData[0].members} addMember={this.addMember} handleMemberChange={this.handleMemberChange}/>
 
 
-        <div key={this.state.id}>
+        {/* <div key={this.state.id}>
           <h1> Project Name: {this.state.title} </h1>
           <p> Description: {this.state.description} </p>
           <p> Duration: {this.state.duration} </p>
@@ -64,11 +77,11 @@ class Project extends React.Component {
             })}
           </p>
           <Link to='/project/details'><button>See project</button></Link>
-        </div>
+        </div> */}
         
-        {projectData.map((item) => {
+        {this.state.projectData.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.projectId}>
               <h1> Project Name: {item.title} </h1>
               <p> Description: {item.description} </p>
               <p> Duration: {item.duration} </p>
