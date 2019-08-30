@@ -29,7 +29,7 @@ app.get('/sendSMS', (req, res) => {
       from: recipient,
       to: '+16475729076'
     })
-    .then(message => console.log(message.body));
+    .then(message => console.log(message.body.replace('Sent from your Twilio trial account - ', 'Good news!')));
 
 })
 

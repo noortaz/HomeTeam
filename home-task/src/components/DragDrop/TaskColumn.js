@@ -8,8 +8,9 @@ import Task from './Task'
 
 const Container = styled.div`
 margin: 8px;
-border: 1px solid grey;
-border-radius: 8px;
+// padding: 1rem;
+// border: 2px solid darksalmon;
+// border-radius: 8px;
 width: 30%;
 
 display: flex;
@@ -19,9 +20,14 @@ const Title = styled.h3`
 padiing: 8px;
 `;
 const TaskList = styled.div`
-padiing: 8px;
+padding: 1rem;
+border: 2px solid darksalmon;
+border-radius: 8px;
+
 transition: background-color 0.2s ease;
-background-color: ${props => (props.isDraggingOver ? 'lightgreen' : 'white')};
+background-color: ${props => (props.isDraggingOver ? 'lightsalmon' : 'white')};
+border: ${props => (props.isDraggingOver ? '2px solid white' : '2px solid darkslamon')};
+
 flex-grow: 1;
 min-height: 200px;
 `;

@@ -3,14 +3,35 @@
 }
 
 
+@import url('https://fonts.googleapis.com/css?family=Bangers&display=swap');
 
 header {
+    
+    
+    color: salmon;
     height: 5rem;
-    background-color: #cfebdf;
+    width: 100%;
+    animation-name: example;
+    animation-duration: 4s;
+    background-color: white;
+
+    h1 {
+        font-family: 'Bangers', cursive;
+        letter-spacing: 8px;
+        position: relative;
+        left: 10rem;
+        top: 2rem;
+    }
 }
+
+// @keyframes example {
+//   from {background-color: #cfebdf;}
+//   to {background-color: yellow;}
+// }
 
 
 .logo{
+    
     width: 30%;
     height: 8rem;
     object-fit: none;

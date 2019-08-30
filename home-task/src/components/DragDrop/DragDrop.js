@@ -16,9 +16,9 @@ import data from '../../data/fakeData';
 
 
 const Container = styled.div`
-margin: 8px;
-border: 1px solid grey;
-border-radius: 8px;
+margin: 2rem 10rem;
+// border: 2px solid grey;
+// border-radius: 8px;
 display: flex;
 justify-content: space-around;
 `;

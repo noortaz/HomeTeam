@@ -9,8 +9,17 @@ border: 1px solid lightgrey;
 margin-bottom: 8px;
 padding: 8px;
 border-radius: 8px;
-background-color: ${props => (props.isDragging ? 'lightblue' : 'beige')}
+background-color: ${props => (props.isDragging ? 'white' : 'beige')};
+color: ${props => (props.isDragging ? 'salmon' : 'black')};
+
+display: flex;
+flex-direction: column;
 `;
+
+const Uplayer = styled.div`
+display: flex;
+justify-content: space-between;
+`
 
 
 class Task extends React.Component {
@@ -21,7 +30,7 @@ class Task extends React.Component {
 
   sendText = () => {
     const recipient = '+12267782404';
-    const textmessages = 'completed task';
+    const textmessages = 'A task has been completed!';
     fetch(`http://localhost:8080/sendSMS?recipient=${recipient}&textmessages=${textmessages}`)
     .then(response => console.log(response))
     .catch(err => console.log(err));
@@ -48,12 +57,15 @@ class Task extends React.Component {
             {...provided.dragHandleProps}
             isDragging={snapshot.isDragging}
           >
-          {this.props.task.title}
-            <p>Assigned To: {assignedMember}</p>
+            <Uplayer>
+              <h4>{this.props.task.title}</h4>
+              <p className='assignedTo'> {assignedMember}</p>
+            </Uplayer>
+            
             <form>
               {/* <label> Points: {gainedPoints}</label> */}
-              <p>Task is {this.props.columnTitle}</p>
-              <p>{assignedMember} gained {this.state.score} point for this task</p>
+              {/* <p>Task is {this.props.columnTitle}</p>
+              <p>{assignedMember} gained {this.state.score} point for this task</p> */}
               <button type="button" onClick={this.props.sendPoints}>{gainedPoints}</button>
               <button type="button" onClick={this.sendText}>send text</button>
             </form>

@@ -1,4 +1,13 @@
-.box {
+.assignedTo {
+    font-size: 1rem;
+
+    color: salmon;
+    height: 3rem;
+    width: 3rem;
+    border: 2px solid silver;
+    border-radius: 50%;
+
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
