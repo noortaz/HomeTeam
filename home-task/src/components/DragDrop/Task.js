@@ -9,8 +9,8 @@ border: 1px solid lightgrey;
 margin-bottom: 8px;
 padding: 8px;
 border-radius: 8px;
-background-color: ${props => (props.isDragging ? 'white' : 'beige')};
-color: ${props => (props.isDragging ? 'salmon' : 'black')};
+background-color: ${props => (props.isDragging ? 'white' : '#543855')};
+color: ${props => (props.isDragging ? 'salmon' : 'white')};
 
 display: flex;
 flex-direction: column;
@@ -66,8 +66,9 @@ class Task extends React.Component {
               {/* <label> Points: {gainedPoints}</label> */}
               {/* <p>Task is {this.props.columnTitle}</p>
               <p>{assignedMember} gained {this.state.score} point for this task</p> */}
-              <button type="button" onClick={this.props.sendPoints}>{gainedPoints}</button>
-              <button type="button" onClick={this.sendText}>send text</button>
+              
+              <button type="button" onClick={this.sendText}></button>
+              <button className='score' type="button" onClick={this.props.sendPoints}>Point: {gainedPoints}</button>
             </form>
             
             {/* <p>Reward: {(rewardNum) ? `${assignedMember} has ${rewardNum} reward!` : `${assignedMember} has no reward`}</p>

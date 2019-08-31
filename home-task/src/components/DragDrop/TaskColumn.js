@@ -17,7 +17,10 @@ display: flex;
 flex-direction: column;
 `;
 const Title = styled.h3`
+color: #323232;
+margin-bottom: 1rem;
 padiing: 8px;
+font-family: 'Merienda One', cursive;
 `;
 const TaskList = styled.div`
 padding: 1rem;
@@ -39,23 +42,15 @@ class TaskColumn extends React.Component {
     let pointNow;
     let gainReward;
 
-     if (this.props.column.title === "Done") {
+    if (this.props.column.title === "We did it!") {
 
       let lastAddedTask = this.props.tasks.length - 1;
 
       if(lastAddedTask >= 0){
       this.props.members[this.props.tasks[lastAddedTask].assignedTo[0]] = this.props.members[this.props.tasks[lastAddedTask].assignedTo[0]] + 1;
       pointNow = this.props.members[this.props.tasks[lastAddedTask].assignedTo[0]];
-
-      //console.log(this.props.members);
-        if (pointNow >= 1) {
-          gainReward = 1
-        }
       }
     }
-
-    
-
 
     return (
       <Container>

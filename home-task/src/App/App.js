@@ -16,8 +16,9 @@ class App extends React.Component {
   render() {
     return (
       <div className='app'>
-      <Header/>
+      
       <BrowserRouter>
+        <Header />
         <Switch>
           <Route path='/project/details' component={ProjectDetails}/>
           <Route path='/project' component={Project}/>

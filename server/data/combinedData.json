@@ -18,25 +18,15 @@
       "assignedTo": ["child1"],
       "description": "You will do the laundry, dry them well, fold them and put them in closet"
     },
-    "task4": {
-       "id": "task4", 
-       "title": "Cook daily meals",
-       "assignedTo": ["child2"],
-       "description": "This task involves daily cooking, you can alter the days with another person."
-    },
-    "task5": { 
+   
+    "task4": { 
       "id": "task5", 
       "title": "Vaccuum the house",
       "assignedTo": ["mom"],
       "description": "The house needs to cleaned and you have to vaccuum all the carpets."
     },
-    "task6": { 
-      "id": "task6", 
-      "title": "Wash the dishes",
-      "assignedTo": ["dad"],
-      "description": "Everyone will wash their own dishes but the extra cooking pots, plates etc have to be cleaned by you."
-    },
-    "task7": { 
+   
+    "task5": { 
       "id": "task7", 
       "title": "Take the garbage out",
       "assignedTo": ["mom"],
@@ -46,25 +36,24 @@
   "columns": {
     "column1": {
       "id": "column1",
-      "title": "To Do",
+      "title": "Let's do it!",
       "taskIds": [
         "task1",
         "task2",
         "task3",
         "task4",
-        "task5",
-        "task6",
-        "task7"
+        "task5"
+      
       ]
     },
     "column2": {
       "id": "column2",
-      "title": "In progress",
+      "title": "We're almost there!",
       "taskIds": []
     },
     "column3": {
       "id": "column3",
-      "title": "Done",
+      "title": "We did it!",
       "taskIds": []
     }
   },

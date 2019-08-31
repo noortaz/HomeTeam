@@ -87,7 +87,7 @@ class ProjectDetails extends React.Component {
               <li className="details__item" key={item.id}>
                 <h3 className="details__item__title">{item.title}</h3>
                 <p className="details__item__description">{item.description}</p>
-                <p className="details__item__assigned">Assigned To: {(item.assignedTo[1]) ? `${item.assignedTo[0]} and ${item.assignedTo[1]}` : `${item.assignedTo[0]}`}</p>
+                {/* <p className="details__item__assigned">Assigned To: {(item.assignedTo[1]) ? `${item.assignedTo[0]} and ${item.assignedTo[1]}` : `${item.assignedTo[0]}`}</p> */}
               </li>
             )
           })}

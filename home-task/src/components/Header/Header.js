@@ -1,6 +1,5 @@
 import React from 'react';
-//import logo
-//import logo from '../../assets/hometeam.png';
+import {Link} from 'react-router-dom';
 
 //import styles
 import './header.scss'
@@ -9,7 +8,7 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <h1>HomeTeam</h1>
+        <Link to='/'><h1>HomeTeam</h1></Link>
       </header>
     )
   }
