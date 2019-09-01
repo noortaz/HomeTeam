@@ -41,12 +41,14 @@ app.get('/taskData', (req, res) => {
 
 app.post('/taskData', (req, res) => {   
 
-    combinedData.columns.column1.taskIds.push(req.body.id);
-    combinedData = { ...combinedData };
-    combinedData.tasks[req.body.id] = req.body;
-
+    
+    console.log(req.body);
     if (req.body.members) {
-        combinedData.members = req.body.members
+        combinedData.members[req.body.members] = 0
+    } else {
+        combinedData.columns.column1.taskIds.push(req.body.id);
+        combinedData = { ...combinedData };
+        combinedData.tasks[req.body.id] = req.body;
     }
 
     res.json(combinedData);
