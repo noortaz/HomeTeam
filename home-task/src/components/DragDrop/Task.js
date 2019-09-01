@@ -47,7 +47,7 @@ class Task extends React.Component {
   render() {
     let assignedMember = this.props.task.assignedTo[0];
     let gainedPoints = this.props.members[assignedMember]
-    //let rewardNum = this.props.gainReward
+
     return (
       <Draggable draggableId={this.props.task.id} index={this.props.index}>
         {(provided, snapshot) => (

@@ -31,13 +31,8 @@ class DragDrop extends React.Component {
   getAllTasks = () => {
     axios.get('http://localhost:8080/taskData')
       .then(response => {
-        // const tasks = response.data.columnOrder.map(columnId => {
-        //   const column = response.data.columns[columnId];
-        //   return column.taskIds.map(taskId => response.data.tasks[taskId])
-        // })
         const data = response.data
         this.setState(data);
-        console.log(this.state)
       })
   }
 
@@ -141,7 +136,8 @@ class DragDrop extends React.Component {
           {this.state.columnOrder.map((columnId) => {
             const column = this.state.columns[columnId]
             const tasks = column.taskIds.map(taskId => this.state.tasks[taskId])
-             const memberPoints = tasks.map(item => (item.assignedTo) ? this.state.members[item.assignedTo[0]] : null)
+            let memberPoints;
+            memberPoints = tasks.filter(Boolean).map(item => (item.assignedTo) ? this.state.members[item.assignedTo[0]] : null)
             //console.log(memberPoints);
 
             return <TaskColumn key={column.id} column={column} tasks={tasks} points={memberPoints} members={this.state.members} sendPoints={this.props.sendPoints}/>

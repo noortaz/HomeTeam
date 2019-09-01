@@ -8,7 +8,7 @@ import axios from 'axios';
 import CreateProject from './CreateProject';
 
 //import data
-import projectData from '../../data/projectData';
+// import projectData from '../../data/projectData';
 
 class Project extends React.Component {
 
@@ -19,7 +19,6 @@ class Project extends React.Component {
   getProject = () => {
     axios.get('http://localhost:8080/projectData')
       .then(response => {
-        console.log(response.data)
         this.setState({
           projectData: response.data
         })
@@ -43,13 +42,23 @@ class Project extends React.Component {
   submitProject = (event) => {
     event.preventDefault();
     console.dir(event.target);
-    console.log(this.state.members)
-    this.setState({
-      title: event.target.title.value,
-      description: event.target.description.value,
-      duration: event.target.duration.value,
-      members: this.state.members
-    })
+    console.log(this.state.projectData);
+    let title = event.target.title.value;
+    let description = event.target.description.value;
+    let duration = event.target.duration.value;
+    console.log(title, description, duration);
+    let postProject = () => {
+      axios.post('http://localhost:8080/projectData', {
+        title: title,
+        description: description,
+        duration: duration
+      }).then(response => {
+        console.log(response.data)
+      })
+    }
+    postProject();
+    window.location.reload();
+
   }
 
   componentDidMount() {
@@ -57,7 +66,6 @@ class Project extends React.Component {
   }
 
   render() {
-    console.log(this.state.projectData[0].members)
     
 
     return (
@@ -79,20 +87,20 @@ class Project extends React.Component {
           <Link to='/project/details'><button>See project</button></Link>
         </div> */}
         
-        {this.state.projectData.map((item) => {
+        {this.state.projectData.map((item, index) => {
           return (
-            <div key={item.projectId}>
+            <div key={index}>
               <h1> Project Name: {item.title} </h1>
               <p> Description: {item.description} </p>
               <p> Duration: {item.duration} </p>
-              <p> Members: 
+              {/* <p> Members: 
               {item.members.map((member, index) => {
                 return (
                   <span key={index}> {member} </span>
                 )
               })}
-              </p>
-              <Link to='/project/details'><button>See project</button></Link>
+              </p> */}
+              <Link to={`/${item.projectId}`} ><button>See project</button></Link>
             </div>
           )
         })} 

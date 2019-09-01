@@ -7,6 +7,7 @@ import axios from 'axios';
 
 //import the components
 import DragDrop from '../DragDrop/DragDrop';
+import AddTask from './AddTask'
 
 //import styles
 import './style.scss';
@@ -17,7 +18,18 @@ class ProjectDetails extends React.Component {
   state = {
     data: '',
     taskList: [],
+    getProject: []
   }
+
+  getProject = () => {
+    axios.get('http://localhost:8080/projectData')
+      .then(response => {
+         this.setState({
+           getProject: response.data
+         })
+      })
+  }
+
 
   getAllTasks = () => {
     axios.get('http://localhost:8080/taskData')
@@ -53,9 +65,8 @@ class ProjectDetails extends React.Component {
   }
 
   componentDidMount() {
+    this.getProject();
     this.getAllTasks();
-    // console.log('component mounts')
-    
   }
 
   componentDidUpdate() {
@@ -64,35 +75,40 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    // console.log('data from parent state ,' , this.state.data.members)
+
+    const id = this.props.match.params.projectId;
+    let newproject;
+    
+    if (this.state.getProject !== []) {
+      newproject = this.state.getProject.filter(item => item.projectId === id);
+    }
+    console.log(newproject[0]);
+
     return (
       <>
-      <div className="project__head">
-        <Link to="/project"><button className="project__head__btn"><img className="project__head__icon" src={goBack} alt=""/></button></Link>
-        <div className="project__head__text">
-            <h1 className='project__head__title'>Weekly Task</h1>
-            <p className='project__head__body'>We will complete seven tasks this week and every memeber should complete at least one task. To get a reward you have to complete at least two task</p>
-        </div>        
-      </div>
-      {/* <div>
-        <button>Check Rewards</button>
-      </div> */}
-      
+        <div className="project__head">
+          <Link to="/project"><button className="project__head__btn"><img className="project__head__icon" src={goBack} alt=""/></button></Link>
+          
+          <div className="project__head__text">
+              <h1 className='project__head__title'>{(newproject[0] === undefined ) ? `Loading..` : `${newproject[0].title}`}</h1>
+              <p className='project__head__body'>{(newproject[0] === undefined ) ? `Loading..` : `${newproject[0].description}`}</p>
+          </div>        
+        </div>
 
-      <div className="details">
-        <h2 className="details__head">Get Details</h2>
-        <ul className="details__list">
-          {this.state.taskList.map((item) => {
-            return (
-              <li className="details__item" key={item.id}>
-                <h3 className="details__item__title">{item.title}</h3>
-                <p className="details__item__description">{item.description}</p>
-                {/* <p className="details__item__assigned">Assigned To: {(item.assignedTo[1]) ? `${item.assignedTo[0]} and ${item.assignedTo[1]}` : `${item.assignedTo[0]}`}</p> */}
-              </li>
-            )
-          })}
-        </ul>
-      </div>
+        <div className="details">
+          <h2 className="details__head">Get Details</h2>
+          <ul className="details__list">
+              {this.state.taskList.filter(Boolean).map((item) => {
+              return (
+                <li className="details__item" key={item.id}>
+                  <h3 className="details__item__title">{item.title}</h3>
+                  <p className="details__item__description">{item.description}</p>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+        <AddTask/>
 
         <DragDrop data={this.state.data} sendPoints={this.sendPoints}/>
       </>

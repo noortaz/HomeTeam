@@ -62,7 +62,7 @@ class TaskColumn extends React.Component {
               {...provided.droppableProps}
               isDraggingOver={snapshot.isDraggingOver}
               >
-              {this.props.tasks.map((task, index) => <Task columnTitle={this.props.column.title} key={task.id} task={task} index={index} gainReward={gainReward} points={pointNow} members={this.props.members} sendPoints={this.props.sendPoints}/>)}
+              {this.props.tasks.filter(Boolean).map((task, index) => <Task columnTitle={this.props.column.title} key={task.id} task={task} index={index} gainReward={gainReward} points={pointNow} members={this.props.members} sendPoints={this.props.sendPoints}/>)}
 
               {provided.placeholder}
               </TaskList>

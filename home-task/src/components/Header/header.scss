@@ -10,10 +10,8 @@ header {
     
     color: salmon;
     height: 5rem;
-    width: 100%;
-    animation-name: example;
-    animation-duration: 4s;
-    background-color: white;
+    //width: 100vw;
+
 
     a{
         text-decoration: none;
@@ -22,7 +20,7 @@ header {
     h1 {
         font-family: 'Bangers', cursive;
         letter-spacing: 8px;
-        position: relative;
+        position: absolute;
         left: 10rem;
         top: 2rem;
         
@@ -30,16 +28,4 @@ header {
     }
 }
 
-// @keyframes example {
-//   from {background-color: #cfebdf;}
-//   to {background-color: yellow;}
-// }
 
-
-.logo{
-    
-    width: 30%;
-    height: 8rem;
-    object-fit: none;
-    border-radius: 20px;
-}

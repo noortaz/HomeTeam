@@ -3,6 +3,13 @@
     "title": "Weekly Task",
     "description":" We will complete seven tasks this week and every memeber should complete at least one task. To get a reward you have to complete at least two task",
     "duration": "Seven days",
-    "members": ["Mom", "Dad", "Child-1", "Child-2"]   
+    "members": ["Mom", "Dad", "Child"],
+    "taskIds": [
+        "task1",
+        "task2",
+        "task3",
+        "task4",
+        "task5"
+    ]
 }]
 

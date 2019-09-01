@@ -3,34 +3,34 @@
     "task1": { 
       "id": "task1", 
       "title": "Take the dog for a walk",
-      "assignedTo": ["mom"],
+      "assignedTo": ["Mom"],
       "description": " You have to take the dog out for at least 30 minutes. Don't let it go too far. Be careful when crossing streets."
     },
     "task2": { 
       "id": "task2", 
       "title": "Do the grocery shopping",
-      "assignedTo": ["dad"],
+      "assignedTo": ["Dad"],
       "description": "You are responsible for planning our weekly diet and buy fruits, vegetables, meat and other food-items with the help of another person."
     },
     "task3": { 
       "id": "task3", 
       "title": "Do Laundry",
-      "assignedTo": ["child1"],
+      "assignedTo": ["Child"],
       "description": "You will do the laundry, dry them well, fold them and put them in closet"
     },
    
     "task4": { 
-      "id": "task5", 
+      "id": "task4", 
       "title": "Vaccuum the house",
-      "assignedTo": ["mom"],
+      "assignedTo": ["Mom"],
       "description": "The house needs to cleaned and you have to vaccuum all the carpets."
     },
    
     "task5": { 
-      "id": "task7", 
+      "id": "task5", 
       "title": "Take the garbage out",
-      "assignedTo": ["mom"],
-      "description": "Everyday you must take the garbage out and dump int the correct categories."
+      "assignedTo": ["Dad"],
+      "description": "Everyday you must take the garbage out and dump into the correct categories."
     }
   },
   "columns": {
@@ -43,7 +43,6 @@
         "task3",
         "task4",
         "task5"
-      
       ]
     },
     "column2": {
@@ -63,9 +62,9 @@
       "column3"
   ],
   "members": {
-    "mom": 0,
-    "dad": 0,
-    "child1": 0,
-    "child2": 0
+    "Mom": 0,
+    "Dad": 0,
+    "Child": 0
   }
+  
 }

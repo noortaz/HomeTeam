@@ -41,12 +41,12 @@ app.get('/taskData', (req, res) => {
 
 app.post('/taskData', (req, res) => {   
 
+    combinedData.columns.column1.taskIds.push(req.body.id);
+    combinedData = { ...combinedData };
+    combinedData.tasks[req.body.id] = req.body;
+
     if (req.body.members) {
         combinedData.members = req.body.members
-    } else {
-        combinedData.columns.column1.taskIds.push(req.body.id);
-        combinedData = { ...combinedData };
-        combinedData.tasks[req.body.id] = req.body;
     }
 
     res.json(combinedData);
@@ -56,6 +56,13 @@ app.post('/taskData', (req, res) => {
 // get and post the data for my project page
 app.get('/projectData', (req, res) => {
   res.json(projectData);
+})
+
+app.get('/:projectId', (req, res) => {
+    const selectedProject = projectData.filter((item) =>
+        item.projectId == req.params.projectId
+    )
+    res.status(201).json(selectedProject[0]);
 })
 
 app.post('/projectData', (req, res) => {

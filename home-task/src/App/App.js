@@ -10,6 +10,7 @@ import Header from '../components/Header/Header';
 import Project from '../components/Project/Project';
 import ProjectDetails from '../components/ProjectDetails/ProjectDetails';
 
+
 class App extends React.Component {
   
   
@@ -20,9 +21,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path='/project/details' component={ProjectDetails}/>
-          <Route path='/project' component={Project}/>
-          <Route path='/' component={HomePage}/>
+          <Route path='/project' exact component={Project}/>
+          <Route path='/' exact component={HomePage}/>
+          <Route path='/:projectId' render={props => <ProjectDetails match={props.match}/>}/>
         </Switch>
       </BrowserRouter>
       </div>
