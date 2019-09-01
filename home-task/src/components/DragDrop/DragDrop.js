@@ -11,8 +11,6 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import axios from 'axios';
 
-// //import data
-import data from '../../data/fakeData';
 
 
 const Container = styled.div`
@@ -26,7 +24,7 @@ justify-content: space-around;
 class DragDrop extends React.Component {
 
 
-  state = data;
+  state = {};
 
   getAllTasks = () => {
     axios.get('http://localhost:8080/taskData')
@@ -36,18 +34,7 @@ class DragDrop extends React.Component {
       })
   }
 
-  postTasks = () => {
-    axios.post('http://localhost:8080/taskData', {
-      members: this.state.members
-    }).then(response => {
-      //console.log(response.data)
-    })
-  }
-
   sendPoints = (event) => {
-    // event.preventDefault();
-    console.log("sendPoints function", this.state.members)
-
     this.setState({
       data: {
         members: this.state.members,
@@ -57,22 +44,7 @@ class DragDrop extends React.Component {
 
   componentDidMount() {
     this.getAllTasks();
-    // console.log('component mounts')
-
   }
-
-  componentDidUpdate() {
-    this.postTasks();
-
-  }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.data !== prevProps.data) {
-  //     this.setState(this.props.data);
-  //   }
-  //   // console.log('component updates');
-  //   // console.log('-----------')
-  // }
   
   
   onDragEnd = result => {
@@ -103,8 +75,6 @@ class DragDrop extends React.Component {
       return;
     }
 
-    
-
     const startTaskIds = Array.from(start.taskIds);
     startTaskIds.splice(source.index, 1);
     const newStart = {...start, taskIds: startTaskIds};
@@ -118,33 +88,28 @@ class DragDrop extends React.Component {
     this.setState(newState);
   }
 
-  // sendPoints = (event) => {
-  //   event.preventDefault();
-    
-  //   this.setState({
-  //     members: this.state.members  
-  //   })
-  // }
-
 	render() {
 
-    
-    // console.log('data renders from dragdrop context' , this.state.members)
-    return (
-    <DragDropContext onDragEnd={this.onDragEnd}>
-      <Container>
-          {this.state.columnOrder.map((columnId) => {
-            const column = this.state.columns[columnId]
-            const tasks = column.taskIds.map(taskId => this.state.tasks[taskId])
-            let memberPoints;
-            memberPoints = tasks.filter(Boolean).map(item => (item.assignedTo) ? this.state.members[item.assignedTo[0]] : null)
-            //console.log(memberPoints);
+    if (this.state.columnOrder) {
+      return (
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <Container>
+            {this.state.columnOrder.filter(Boolean).map((columnId) => {
+              const column = this.state.columns[columnId]
+              const tasks = column.taskIds.filter(Boolean).map(taskId => this.state.tasks[taskId])
+              let memberPoints;
+              memberPoints = tasks.filter(Boolean).map(item => (item.assignedTo) ? this.state.members[item.assignedTo[0]] : null)
+              //console.log(memberPoints);
 
-            return <TaskColumn key={column.id} column={column} tasks={tasks} points={memberPoints} members={this.state.members} sendPoints={this.props.sendPoints}/>
-          })}
-      </Container>
-    </DragDropContext> 	
-    )
+              return <TaskColumn key={column.id} column={column} tasks={tasks} points={memberPoints} members={this.state.members} sendPoints={this.props.sendPoints} />
+            })}
+          </Container>
+        </DragDropContext>
+      )
+    } else {
+      return <h1>Loading..</h1>
+    }
+    
 	}
 }
 

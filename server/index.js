@@ -30,34 +30,30 @@ app.get('/sendSMS', (req, res) => {
       to: '+16475729076'
     })
     .then(message => console.log(message.body.replace('Sent from your Twilio trial account - ', 'Good news!')));
-
 })
 
 
 //get and post data for dragdrop page
 app.get('/taskData', (req, res) => {
-    res.json(combinedData);
+    res.status(201).json(combinedData);
 })
 
 app.post('/taskData', (req, res) => {   
+  if (req.body.members) {
+      combinedData.members[req.body.members] = 0
+  } else {
+      combinedData.columns.column1.taskIds.push(req.body.id);
+      combinedData = { ...combinedData };
+      combinedData.tasks[req.body.id] = req.body;
+  }
 
-    
-    console.log(req.body);
-    if (req.body.members) {
-        combinedData.members[req.body.members] = 0
-    } else {
-        combinedData.columns.column1.taskIds.push(req.body.id);
-        combinedData = { ...combinedData };
-        combinedData.tasks[req.body.id] = req.body;
-    }
-
-    res.json(combinedData);
+  res.status(201).json(combinedData);
 })
 
 
 // get and post the data for my project page
 app.get('/projectData', (req, res) => {
-  res.json(projectData);
+  res.status(201).json(projectData);
 })
 
 app.get('/:projectId', (req, res) => {
@@ -71,7 +67,7 @@ app.post('/projectData', (req, res) => {
     const project = req.body;
     const newProject= { ...project, projectId: `${uuid().substr(0, 12)}` }
     projectData.push(newProject);
-    res.json(projectData);
+    res.status(201).json(projectData);
 })
 
 

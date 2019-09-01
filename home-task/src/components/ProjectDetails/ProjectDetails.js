@@ -45,33 +45,38 @@ class ProjectDetails extends React.Component {
     })
   }
 
-  postTasks = () => {
-    axios.post('http://localhost:8080/taskData', {
-      members: this.state.data.members
-    }).then(response => {
-      //console.log(response.data)
-    })
-  }
-
-  sendPoints = (event) => {
-   // event.preventDefault();
-    console.log("sendPoints function" , this.state.data.members)
-
-    this.setState({
-      data: {
-        members: this.state.data.members,
-      }
-    })
-  }
-
   componentDidMount() {
     this.getProject();
     this.getAllTasks();
   }
 
-  componentDidUpdate() {
-    this.postTasks();
-    
+  submitTask = (event) => {
+    event.preventDefault();
+    // console.dir(event.target);
+    // console.log(event.target);
+    let taskNum = event.target.taskNumber.value
+    let title = event.target.title.value;
+    let description = event.target.description.value;
+    let person = event.target.person.value;
+    // console.log(title, description, person, taskNum);
+    let postTask = () => {
+      axios.post('http://localhost:8080/taskData', {
+        id: `task${taskNum}`,
+        title: title,
+        description: description,
+        assignedTo: [person]
+      })
+    }
+
+    let postMember = () => {
+      axios.post('http://localhost:8080/taskData', {
+        members: person
+      })
+    }
+    postMember();
+    postTask();
+    window.location.reload();
+
   }
 
   render() {
@@ -82,7 +87,6 @@ class ProjectDetails extends React.Component {
     if (this.state.getProject !== []) {
       newproject = this.state.getProject.filter(item => item.projectId === id);
     }
-    console.log(newproject[0]);
 
     return (
       <>
@@ -108,9 +112,9 @@ class ProjectDetails extends React.Component {
             })}
           </ul>
         </div>
-        <AddTask/>
+        <AddTask submitTask={this.submitTask}/>
 
-        <DragDrop data={this.state.data} sendPoints={this.sendPoints}/>
+        <DragDrop data={this.state.data} />
       </>
     )
   }

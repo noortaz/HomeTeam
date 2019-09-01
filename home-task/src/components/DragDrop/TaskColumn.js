@@ -4,6 +4,7 @@ import React from 'react';
 import { Droppable} from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
+// import components
 import Task from './Task'
 
 const Container = styled.div`

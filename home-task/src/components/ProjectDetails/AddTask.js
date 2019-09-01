@@ -57,11 +57,11 @@ class AddTask extends React.Component {
           >
             <h2 ref={subtitle => this.subtitle = subtitle}>Add new task</h2>
 
-            <form >
+            <form onSubmit={this.props.submitTask}>
 
               <div>
                 <label>Your task number</label>
-                <input type="task" name="taskNumber" />
+                <input type="number" name="taskNumber" />
               </div>
 
               <div>
@@ -79,7 +79,7 @@ class AddTask extends React.Component {
                 <input type="person" name="person" />
               </div>
 
-              <button type="Submit">Submit</button>
+              <button type="Submit" >Submit</button>
               <button type='button' onClick={this.closeModal}>close</button>
 
             </form>
