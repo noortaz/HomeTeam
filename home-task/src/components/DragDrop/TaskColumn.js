@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 // import components
 import Task from './Task';
-import Congratulations from './Congratulations';
+import test from '../../assets/cute1.png';
 
 const Container = styled.div`
 margin: 8px;
@@ -77,11 +77,12 @@ class TaskColumn extends React.Component {
       }
     }
 
-    // if (this.props.column.title === "We did it!" && this.props.tasks.length >= 5) {
-    //   return <Congratulations
-    //     openModal={this.openModal}
-    //     closeModal={this.closeModal}
-    //     modalIsOpen={this.state.modalIsOpen} />
+    if (this.props.column.title === ("Let's do it!" || "We're almost there!") && this.props.tasks.length === 0) {
+      return <img width='20%' height='10%' src={test} alt=''/>
+    }
+
+    // if (this.props.column.title === "We're almost there!" && this.props.tasks.length === 0) {
+    //   return <img width='20%' height='10%' src={test} alt='' />
     // }
 
     return (

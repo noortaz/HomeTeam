@@ -54,20 +54,20 @@ class Project extends React.Component {
 
     if (this.state.projectData !== []) {
       return (
-        <>
+        <div className='full-box'>
           <CreateProject submitProject={this.submitProject} />
 
           {this.state.projectData.map((item, index) => {
             return (
-              <div key={index}>
-                <h1> Project Name: {item.title} </h1>
-                <p> Description: {item.description} </p>
-                <p> Duration: {item.duration} </p>
-                <Link to={`/${item.projectId}`} ><button>See project</button></Link>
+              <div className='project-box' key={index}>
+                <h1 className='project-box__title'> {item.title} </h1>
+                <p className='project-box__description'> {item.description} </p>
+                <p className='project-box__duration'> We have {item.duration} to complete this project!</p>
+                <Link to={`/${item.projectId}`} ><button className='start-btn'>Start</button></Link>
               </div>
             )
           })}
-        </>
+        </div>
       )
     } else {
       return <h1>Loading...</h1>

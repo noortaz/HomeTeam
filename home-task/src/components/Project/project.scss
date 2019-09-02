@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two|Merienda+One&display=swap');
+
+
+
+.full-box {
+    margin: 0 10rem;
+}
 .project-form {
     
     width: 90%;
     height: 80%;
-    //background-color: red;
-    //padding: 1rem;
+    margin-top: 1rem;
 
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
     div {
-        
-        //width: 20rem;
+
         display: flex;
         flex-direction: column;
 
@@ -57,4 +62,63 @@
         }
         
     }
+}
+
+
+.project-box {
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 15rem;
+    margin: 2rem 1rem;
+    padding: 1rem;
+    border-bottom: 2px solid salmon;
+
+    &__title {
+        font-family: 'Merienda One', cursive;
+    }
+
+    
+}
+
+.create-btn {
+    margin: 2rem 0;
+    width: 15rem;
+    height: 2.5rem;
+    border: 1px solid #543855;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #543855;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    outline: none;
+}
+
+.create-btn:hover {
+    background-color: #9c6a9e;
+    border: 2px solid #9c6a9e;
+    
+}
+
+.start-btn {
+    width: 8rem;
+    height: 2.5rem;
+    border: 1px solid #543855;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #543855;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    outline: none;
+}
+
+.start-btn:hover {
+    background-color: #9c6a9e;
+    border: 2px solid #9c6a9e;
+    
 }

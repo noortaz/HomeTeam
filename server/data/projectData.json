@@ -1,8 +1,8 @@
 [{
     "projectId": "a1",
     "title": "Weekly Task",
-    "description":" We will complete seven tasks this week and every memeber should complete at least one task. To get a reward you have to complete at least two task",
-    "duration": "Seven days",
+    "description":" We will complete five tasks this week and every memeber should complete at least one task. Everyone should cooperate and let others know when the task is completed.",
+    "duration": "seven days",
     "members": ["Mom", "Dad", "Child"],
     "taskIds": [
         "task1",

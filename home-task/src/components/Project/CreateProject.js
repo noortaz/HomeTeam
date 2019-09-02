@@ -40,7 +40,7 @@ class CreateProject extends React.Component {
   }
 
   afterOpenModal = () => {
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = '#323232';
   }
 
   closeModal = () => {
@@ -54,7 +54,7 @@ class CreateProject extends React.Component {
 
     return (
       <>
-        <button onClick={this.openModal}>Create new project</button>
+        <button onClick={this.openModal} className='create-btn'>Create new project</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -67,7 +67,7 @@ class CreateProject extends React.Component {
           <form className='project-form' onSubmit={this.props.submitProject}>
 
             <div>
-              <label>Name your project</label>
+              <label>What's the name of your project</label>
               <input type="text" name="title"/>
             </div>
 
@@ -77,23 +77,13 @@ class CreateProject extends React.Component {
             </div>
 
             <div>
-              <label>Email</label>
-              <input type="email" name="email"/>
-            </div>
-
-            <div>
-              <label>Duration</label>
-              <select name="duration">
-                <option>One week</option>
-                <option>Two week</option>
-                <option>A month</option>
-              </select>
+              <label>How long should it take?</label>
+              <input type="text" name="duration" />
             </div>
 
             <div className='btn-styles'>
               <button type='button' onClick={this.closeModal}>Go back</button>
               <button type="Submit" >Submit</button>
-
             </div>
 
           </form>

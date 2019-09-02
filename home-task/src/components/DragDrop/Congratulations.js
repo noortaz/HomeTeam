@@ -20,25 +20,25 @@ Modal.setAppElement('#root');
 
 class Congratulations extends React.Component {
 
-  // state = {
-  //   modalIsOpen: false,
-  // };
+  state = {
+    modalIsOpen: false,
+  };
 
-  // openModal = () => {
-  //   this.setState({
-  //     modalIsOpen: true
-  //   });
-  // }
+  openModal = () => {
+    this.setState({
+      modalIsOpen: true
+    });
+  }
 
-  // afterOpenModal = () => {
-  //   this.subtitle.style.color = '#f00';
-  // }
+  afterOpenModal = () => {
+    this.subtitle.style.color = '#f00';
+  }
 
-  // closeModal = () => {
-  //   this.setState({
-  //     modalIsOpen: false,
-  //   });
-  // }
+  closeModal = () => {
+    this.setState({
+      modalIsOpen: false,
+    });
+  }
 
 
 
@@ -47,12 +47,12 @@ class Congratulations extends React.Component {
     return (
       <>
         <div>
-          <button onClick={this.props.openModal}>Congratulations!!</button>
+          <button onClick={this.openModal}>Congratulations!!</button>
 
           <Modal
-            isOpen={this.props.modalIsOpen}
+            isOpen={this.modalIsOpen}
 
-            onRequestClose={this.props.closeModal}
+            onRequestClose={this.closeModal}
 
             contentLabel="Example Modal"
           >
