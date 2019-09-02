@@ -1,5 +1,5 @@
 
-
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two|Merienda+One&display=swap');
 
 .hero {
     background-color: white;
@@ -24,10 +24,10 @@
 .hero-btn {
     width: 9rem;
     height: 4rem;
-    border: 1px solid salmon;
+    border: 1px solid #543855;
     border-radius: 4px;
     text-align: center;
-    background-color: salmon;
+    background-color: #543855;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
@@ -37,13 +37,14 @@
 }
 
 .hero-btn:hover {
-    background-color: darksalmon;
+    background-color: #9c6a9e;
+    border: 2px solid #9c6a9e;
     
 }
 
 .hero-text {
     z-index: 10;
-    
+    font-family: 'Merienda One', cursive;
     font-size: 2rem;
     font-weight: bold;
     position: absolute;
@@ -56,7 +57,7 @@
 
 @keyframes textflow {
   from {top: 4rem; opacity: 0 }
-  to {top: 18rem; opacity: 1 }
+  to {top: 19rem; opacity: 1 }
 }
 
 .hero-slogan {

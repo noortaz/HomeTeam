@@ -97,11 +97,18 @@ class DragDrop extends React.Component {
             {this.state.columnOrder.filter(Boolean).map((columnId) => {
               const column = this.state.columns[columnId]
               const tasks = column.taskIds.filter(Boolean).map(taskId => this.state.tasks[taskId])
-              let memberPoints;
-              memberPoints = tasks.filter(Boolean).map(item => (item.assignedTo) ? this.state.members[item.assignedTo[0]] : null)
-              //console.log(memberPoints);
 
-              return <TaskColumn key={column.id} column={column} tasks={tasks} points={memberPoints} members={this.state.members} sendPoints={this.props.sendPoints} />
+              let memberPoints = tasks
+              .filter(Boolean)
+              .map(item => (item.assignedTo) ? this.state.members[item.assignedTo[0]] : null)
+
+              return <TaskColumn 
+              key={column.id} 
+              column={column} 
+              tasks={tasks} 
+              points={memberPoints} 
+              members={this.state.members} 
+              sendPoints={this.props.sendPoints} />
             })}
           </Container>
         </DragDropContext>

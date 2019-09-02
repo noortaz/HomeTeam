@@ -1,6 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
 
+//import style
+import './project.scss';
+
 
 const customStyles = {
   content: {
@@ -9,7 +12,15 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    width: '28rem',
+    height: '28rem',
+    backgroundColor: 'lightpink',
+    borderRadius: '2rem',
+    border: '1px solid lightpink',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 };
 
@@ -53,7 +64,7 @@ class CreateProject extends React.Component {
         >
           <h2 ref={subtitle => this.subtitle = subtitle}>Create Your Project</h2>
           
-          <form onSubmit={this.props.submitProject}>
+          <form className='project-form' onSubmit={this.props.submitProject}>
 
             <div>
               <label>Name your project</label>
@@ -79,8 +90,11 @@ class CreateProject extends React.Component {
               </select>
             </div>
 
-            <button type="Submit">Submit</button>
-            <button type='button' onClick={this.closeModal}>close</button>
+            <div className='btn-styles'>
+              <button type='button' onClick={this.closeModal}>Go back</button>
+              <button type="Submit" >Submit</button>
+
+            </div>
 
           </form>
 

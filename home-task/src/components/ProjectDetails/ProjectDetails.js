@@ -112,8 +112,10 @@ class ProjectDetails extends React.Component {
             })}
           </ul>
         </div>
-        <AddTask submitTask={this.submitTask}/>
-
+        <div className='btn-container'>
+          <AddTask submitTask={this.submitTask} />
+        </div>
+        
         <DragDrop data={this.state.data} />
       </>
     )

@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import msg from '../../assets/message.svg';
 
 
 const Container = styled.div`
@@ -19,6 +20,11 @@ flex-direction: column;
 const Uplayer = styled.div`
 display: flex;
 justify-content: space-between;
+`
+
+const Form = styled.div`
+display: flex;
+align-items: center;
 `
 
 
@@ -63,16 +69,11 @@ class Task extends React.Component {
             </Uplayer>
             
             <form>
-              {/* <label> Points: {gainedPoints}</label> */}
-              {/* <p>Task is {this.props.columnTitle}</p>
-              <p>{assignedMember} gained {this.state.score} point for this task</p> */}
-              
-              <button type="button" onClick={this.sendText}></button>
-              <button className='score' type="button" onClick={this.props.sendPoints}>Point: {gainedPoints}</button>
+              <Form>
+                <img className='msg-icon' onClick={this.sendText} src={msg} alt="" />
+                <button className='score' type="button" onClick={this.props.sendPoints}>Point: {gainedPoints}</button>
+              </Form>
             </form>
-            
-            {/* <p>Reward: {(rewardNum) ? `${assignedMember} has ${rewardNum} reward!` : `${assignedMember} has no reward`}</p>
-           */}
             {provided.placeholder}
           </Container>
         )}

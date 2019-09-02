@@ -7,6 +7,9 @@ import axios from 'axios';
 //import components
 import CreateProject from './CreateProject';
 
+//import style
+import './project.scss';
+
 
 class Project extends React.Component {
 

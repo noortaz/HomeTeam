@@ -1,7 +1,11 @@
 import React from 'react';
 import Modal from 'react-modal';
+// import styled from 'styled-components';
 
 
+// const TaskModal = styled.div`
+
+// `;
 
 const customStyles = {
   content: {
@@ -10,7 +14,15 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    width: '28rem',
+    height: '28rem',
+    backgroundColor: 'lightpink',
+    borderRadius: '2rem',
+    border: '1px solid lightpink',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 };
 
@@ -29,7 +41,8 @@ class AddTask extends React.Component {
   }
 
   afterOpenModal = () => {
-    this.subtitle.style.color = '#f00';
+    const title = this.subtitle.style;
+    title.color = '#323232';    
   }
 
   closeModal = () => {
@@ -46,7 +59,7 @@ class AddTask extends React.Component {
       <>
         <div>
 
-          <button onClick={this.openModal}>Add Task</button>
+          <button className='btn-task' onClick={this.openModal}>Add a new task</button>
 
           <Modal
             isOpen={this.state.modalIsOpen}
@@ -57,7 +70,7 @@ class AddTask extends React.Component {
           >
             <h2 ref={subtitle => this.subtitle = subtitle}>Add new task</h2>
 
-            <form onSubmit={this.props.submitTask}>
+            <form className='task-form' onSubmit={this.props.submitTask}>
 
               <div>
                 <label>Your task number</label>
@@ -79,8 +92,12 @@ class AddTask extends React.Component {
                 <input type="person" name="person" />
               </div>
 
-              <button type="Submit" >Submit</button>
-              <button type='button' onClick={this.closeModal}>close</button>
+              <div className='btn-styles'>
+                <button type='button' onClick={this.closeModal}>Go back</button>
+                <button type="Submit" >Submit</button>
+                
+              </div>
+              
 
             </form>
 
